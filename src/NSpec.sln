@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSpec", "NSpec\NSpec.csproj", "{475B40ED-7AA2-43C5-A58D-24D0BCD3DD53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSpec.NUnitAddin", "NSpec.NUnitAddin\NSpec.NUnitAddin.csproj", "{EF6500FA-6062-4C60-9A5E-74B09F392571}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{475B40ED-7AA2-43C5-A58D-24D0BCD3DD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{475B40ED-7AA2-43C5-A58D-24D0BCD3DD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{475B40ED-7AA2-43C5-A58D-24D0BCD3DD53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF6500FA-6062-4C60-9A5E-74B09F392571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF6500FA-6062-4C60-9A5E-74B09F392571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF6500FA-6062-4C60-9A5E-74B09F392571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF6500FA-6062-4C60-9A5E-74B09F392571}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
