@@ -1,6 +1,19 @@
-﻿namespace NSpec.NUnitAddin
+﻿using NUnit.Core.Extensibility;
+
+namespace NSpec.NUnitAddin
 {
-    public class NSpecNUnitAddin
+    [NUnitAddin]
+    public class NSpecNUnitAddin : IAddin
     {
+        public bool Install(IExtensionHost host)
+        {
+            var extensionPoint = host.GetExtensionPoint("TestDecorators");
+            if (extensionPoint == null)
+                return false;
+
+            extensionPoint.Install(new NSpecTestDecorator());
+
+            return true;
+        }
     }
 }

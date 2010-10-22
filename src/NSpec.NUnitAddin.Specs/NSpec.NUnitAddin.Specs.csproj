@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EF6500FA-6062-4C60-9A5E-74B09F392571}</ProjectGuid>
+    <ProjectGuid>{99F4E995-B60B-4303-8D84-7E04FBEB477F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NSpec.NUnitAddin</RootNamespace>
-    <AssemblyName>NSpec.NUnitAddin</AssemblyName>
+    <RootNamespace>NSpec.NUnitAddin.Specs</RootNamespace>
+    <AssemblyName>NSpec.NUnitAddin.Specs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,16 +31,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\..\lib\nsubstitute\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.core.interfaces">
       <HintPath>..\..\lib\nunit\bin\net-2.0\lib\nunit.core.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\nunit\bin\net-2.0\framework\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NSpecNUnitAddin.cs" />
-    <Compile Include="NSpecTestDecorator.cs" />
+    <Compile Include="NSpecNUnitAddinSpec.cs" />
+    <Compile Include="NSpecTestDecoratorSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NSpec.NUnitAddin\NSpec.NUnitAddin.csproj">
+      <Project>{EF6500FA-6062-4C60-9A5E-74B09F392571}</Project>
+      <Name>NSpec.NUnitAddin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NSpec\NSpec.csproj">
+      <Project>{475B40ED-7AA2-43C5-A58D-24D0BCD3DD53}</Project>
+      <Name>NSpec</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
