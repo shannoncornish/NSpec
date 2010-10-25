@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.core">
+      <HintPath>..\..\lib\nunit\bin\net-2.0\lib\nunit.core.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.core.interfaces">
       <HintPath>..\..\lib\nunit\bin\net-2.0\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
@@ -38,9 +41,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DecorateTestSpecification.cs" />
     <Compile Include="NSpecNUnitAddin.cs" />
     <Compile Include="NSpecTestDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NSpec\NSpec.csproj">
+      <Project>{475B40ED-7AA2-43C5-A58D-24D0BCD3DD53}</Project>
+      <Name>NSpec</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

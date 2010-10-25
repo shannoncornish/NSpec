@@ -34,6 +34,9 @@
     <Reference Include="NSubstitute">
       <HintPath>..\..\lib\nsubstitute\NSubstitute.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.core">
+      <HintPath>..\..\lib\nunit\bin\net-2.0\lib\nunit.core.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.core.interfaces">
       <HintPath>..\..\lib\nunit\bin\net-2.0\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
@@ -44,6 +47,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DecorateTestSpecificationSpecs.cs" />
     <Compile Include="NSpecNUnitAddinSpec.cs" />
     <Compile Include="NSpecTestDecoratorSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
