@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace NSpec.NUnitAddin.Specs
 {
-    public class NSpecNUnitAddinSpec : Spec
+    public class NSpecNUnitAddinSpecs : Spec
     {
         NSpecNUnitAddin addin;
 
@@ -22,7 +22,7 @@ namespace NSpec.NUnitAddin.Specs
 
             var result = addin.Install(extensionHost);
 
-            specify(() => result == true);
+            specify(() => result);
 
             specify(() => extensionPoint.Received().Install(Arg.Any<NSpecTestDecorator>()));
         }

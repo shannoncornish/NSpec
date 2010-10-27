@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DecorateTestSpecificationSpecs.cs" />
-    <Compile Include="NSpecNUnitAddinSpec.cs" />
+    <Compile Include="NSpecNUnitAddinSpecs.cs" />
     <Compile Include="NSpecTestDecoratorSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

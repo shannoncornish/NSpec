@@ -11,7 +11,7 @@ namespace NSpec.NUnitAddin
             if (extensionPoint == null)
                 return false;
 
-            extensionPoint.Install(new NSpecTestDecorator());
+            extensionPoint.Install(new NSpecTestDecorator(new DecorateTestSpecification()));
 
             return true;
         }

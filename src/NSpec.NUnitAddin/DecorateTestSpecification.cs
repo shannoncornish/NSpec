@@ -6,7 +6,7 @@ namespace NSpec.NUnitAddin
     {
         const string TestMethodTestType = "TestMethod";
 
-        public bool IsSatisfiedBy(Test test)
+        public virtual bool IsSatisfiedBy(Test test)
         {
             return test.TestType == TestMethodTestType
                 && typeof(Spec).IsAssignableFrom(test.FixtureType);
