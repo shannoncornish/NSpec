@@ -7,16 +7,18 @@ namespace NSpec.NUnitAddin
     public class NSpecTestDecorator : ITestDecorator
     {
         readonly DecorateTestSpecification decorateTestSpecification;
+        readonly NSpecTestMethodBuilder nspecTestMethodBuilder;
 
-        public NSpecTestDecorator(DecorateTestSpecification decorateTestSpecification)
+        public NSpecTestDecorator(DecorateTestSpecification decorateTestSpecification, NSpecTestMethodBuilder nspecTestMethodBuilder)
         {
             this.decorateTestSpecification = decorateTestSpecification;
+            this.nspecTestMethodBuilder = nspecTestMethodBuilder;
         }
 
         public Test Decorate(Test test, MemberInfo member)
         {
             if (decorateTestSpecification.IsSatisfiedBy(test))
-                return new NSpecTestMethod((TestMethod) test);
+                return nspecTestMethodBuilder.Build((TestMethod) test);
 
             return test;
         }

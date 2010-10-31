@@ -45,6 +45,7 @@
     <Compile Include="NSpecNUnitAddin.cs" />
     <Compile Include="NSpecTestDecorator.cs" />
     <Compile Include="NSpecTestMethod.cs" />
+    <Compile Include="NSpecTestMethodBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

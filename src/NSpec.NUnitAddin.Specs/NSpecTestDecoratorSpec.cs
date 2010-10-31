@@ -10,15 +10,17 @@ namespace NSpec.NUnitAddin.Specs
     {
         NSpecTestDecorator decorator;
         DecorateTestSpecification decorateTestSpecification;
+        NSpecTestMethodBuilder nspecTestMethodBuilder;
         TestMethod test;
 
         [SetUp]
         public void setup()
         {
             decorateTestSpecification = Substitute.For<DecorateTestSpecification>();
-            decorator = new NSpecTestDecorator(decorateTestSpecification);
+            nspecTestMethodBuilder = new NSpecTestMethodBuilder();
+            decorator = new NSpecTestDecorator(decorateTestSpecification, nspecTestMethodBuilder);
 
-            test = Substitute.For<TestMethod>(CreateMethodInfoArg()); 
+            test = TestSubstitute.ForTestMethod(); 
         }
 
         [Test]
@@ -37,11 +39,6 @@ namespace NSpec.NUnitAddin.Specs
             var result = decorator.Decorate(test, null);
 
             specify(() => result == test);
-        }
-
-        MethodInfo CreateMethodInfoArg()
-        {
-            return GetType().GetMethods().First();
         }
     }
 }

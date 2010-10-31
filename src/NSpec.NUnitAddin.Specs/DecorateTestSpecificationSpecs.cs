@@ -14,7 +14,7 @@ namespace NSpec.NUnitAddin.Specs
         {
             specification = new DecorateTestSpecification();
 
-            test = Substitute.For<Test>("");
+            test = TestSubstitute.ForTest();
         }
 
         [Test]
