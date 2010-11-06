@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace NSpec.NUnitAddin.Specs
 {
-    public class DecorateTestSpecificationSpecs : Spec
+    public class DecorateTestSpecificationSpec : Spec
     {
         DecorateTestSpecification specification;
         Test test;

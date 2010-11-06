@@ -1,12 +1,10 @@
-using System.Linq;
-using System.Reflection;
 using NSubstitute;
 using NUnit.Core;
 using NUnit.Framework;
 
 namespace NSpec.NUnitAddin.Specs
 {
-    public class NSpecTestDecoratorSpecs : Spec
+    public class NSpecTestDecoratorSpec : Spec
     {
         NSpecTestDecorator decorator;
         DecorateTestSpecification decorateTestSpecification;

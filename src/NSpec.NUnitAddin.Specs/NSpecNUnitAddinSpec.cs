@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace NSpec.NUnitAddin.Specs
 {
-    public class NSpecNUnitAddinSpecs : Spec
+    public class NSpecNUnitAddinSpec : Spec
     {
         NSpecNUnitAddin addin;
 

@@ -47,10 +47,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DecorateTestSpecificationSpecs.cs" />
-    <Compile Include="NSpecNUnitAddinSpecs.cs" />
+    <Compile Include="DecorateTestSpecificationSpec.cs" />
+    <Compile Include="NSpecNUnitAddinSpec.cs" />
     <Compile Include="NSpecTestDecoratorSpec.cs" />
-    <Compile Include="NSpecTestMethodBuilderSpecs.cs" />
+    <Compile Include="NSpecTestMethodBuilderSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestSubstitute.cs" />
   </ItemGroup>

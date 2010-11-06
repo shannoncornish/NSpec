@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace NSpec.NUnitAddin.Specs
 {
-    public class NSpecTestMethodBuilderSpecs : Spec
+    public class NSpecTestMethodBuilderSpec : Spec
     {
         NSpecTestMethodBuilder builder;
         TestMethod test;
