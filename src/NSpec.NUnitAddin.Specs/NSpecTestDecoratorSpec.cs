@@ -18,7 +18,7 @@ namespace NSpec.NUnitAddin.Specs
             nspecTestMethodBuilder = new NSpecTestMethodBuilder();
             decorator = new NSpecTestDecorator(decorateTestSpecification, nspecTestMethodBuilder);
 
-            test = TestSubstitute.ForTestMethod(); 
+            test = NUnitSubstitute.ForTestMethod(); 
         }
 
         [Test]

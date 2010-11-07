@@ -16,14 +16,14 @@ namespace NSpec.NUnitAddin.Specs
         {
             builder = new NSpecTestMethodBuilder();
 
-            test = TestSubstitute.ForTestMethod();
+            test = NUnitSubstitute.ForTestMethod();
             test.BuilderException = new Exception();
             test.Categories = new ArrayList();
             test.Description = "description";
             test.ExceptionProcessor = Substitute.For<ExpectedExceptionProcessor>(test);
             test.Fixture = this;
             test.IgnoreReason = "ignoreReason";
-            test.Parent = TestSubstitute.ForTest();
+            test.Parent = NUnitSubstitute.ForTest();
             test.Properties = new Hashtable();
             test.RunState = RunState.Runnable;
         }

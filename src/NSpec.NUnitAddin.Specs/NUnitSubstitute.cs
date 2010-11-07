@@ -4,7 +4,7 @@ using NUnit.Core;
 
 namespace NSpec.NUnitAddin.Specs
 {
-    public static class TestSubstitute
+    public static class NUnitSubstitute
     {
         public static Test ForTest()
         {

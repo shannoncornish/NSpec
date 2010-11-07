@@ -52,7 +52,7 @@
     <Compile Include="NSpecTestDecoratorSpec.cs" />
     <Compile Include="NSpecTestMethodBuilderSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestSubstitute.cs" />
+    <Compile Include="NUnitSubstitute.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NSpec.NUnitAddin\NSpec.NUnitAddin.csproj">
