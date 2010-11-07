@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSpec.NUnitAddin.Specs", "N
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NUnitAddin", "NUnitAddin", "{72F59EDD-34D3-4F92-8A22-93649E32BCBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSpec.Specs", "NSpec.Specs\NSpec.Specs.csproj", "{AADF16D7-B67E-4AC0-9ACF-A6586D30BDE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,12 +29,16 @@ Global
 		{99F4E995-B60B-4303-8D84-7E04FBEB477F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99F4E995-B60B-4303-8D84-7E04FBEB477F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99F4E995-B60B-4303-8D84-7E04FBEB477F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AADF16D7-B67E-4AC0-9ACF-A6586D30BDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AADF16D7-B67E-4AC0-9ACF-A6586D30BDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AADF16D7-B67E-4AC0-9ACF-A6586D30BDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AADF16D7-B67E-4AC0-9ACF-A6586D30BDE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EF6500FA-6062-4C60-9A5E-74B09F392571} = {72F59EDD-34D3-4F92-8A22-93649E32BCBD}
 		{99F4E995-B60B-4303-8D84-7E04FBEB477F} = {72F59EDD-34D3-4F92-8A22-93649E32BCBD}
+		{EF6500FA-6062-4C60-9A5E-74B09F392571} = {72F59EDD-34D3-4F92-8A22-93649E32BCBD}
 	EndGlobalSection
 EndGlobal
