@@ -1,14 +1,15 @@
 using System;
+using NSpec.Core;
 
 namespace NSpec.Specs.Acceptance
 {
     public static class SpecExtensions
     {
-        public static bool Execute(this Spec spec, Action example)
+        internal static Example Execute(this Spec spec, Action example)
         {
             example();
-
-            return true;
+            
+            return new Example();
         }
     }
 }

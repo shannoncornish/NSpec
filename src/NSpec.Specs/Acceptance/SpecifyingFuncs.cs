@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 namespace NSpec.Specs.Acceptance
 {
+    [Pending]
     public class SpecifyingFuncs : Spec
     {
         [Test]
@@ -10,7 +11,7 @@ namespace NSpec.Specs.Acceptance
         {
             var result = this.Execute(specify_func_that_returns_true);
 
-            specify(() => result);
+            specify(() => result.IsPass);
         }
 
         void specify_func_that_returns_true()
@@ -19,12 +20,11 @@ namespace NSpec.Specs.Acceptance
         }
 
         [Test]
-        [Pending]
         public void should_fail_when_specifying_func_that_returns_false()
         {
             var result = this.Execute(specify_func_that_returns_false);
 
-            specify(() => !result);
+            specify(() => result.IsFail);
         }
 
         void specify_func_that_returns_false()
@@ -33,12 +33,11 @@ namespace NSpec.Specs.Acceptance
         }
 
         [Test]
-        [Pending]
         public void should_fail_when_specifying_func_that_throws_exception()
         {
             var result = this.Execute(specify_func_that_throws_exception);
 
-            specify(() => !result);
+            specify(() => result.IsFail);
         }
 
         void specify_func_that_throws_exception()

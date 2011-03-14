@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 namespace NSpec.Specs.Acceptance
 {
+    [Pending]
     public class SpecifyingActions : Spec
     {
         [Test]
@@ -10,7 +11,7 @@ namespace NSpec.Specs.Acceptance
         {
             var result = this.Execute(specify_action_that_completes_successfully);
 
-            specify(() => result);
+            specify(() => result.IsPass);
         }
 
         void specify_action_that_completes_successfully()
@@ -21,12 +22,11 @@ namespace NSpec.Specs.Acceptance
         void action_that_completes_successfully() {}
 
         [Test]
-        [Pending]
         public void should_fail_when_specifying_action_that_throws_exception()
         {
             var result = this.Execute(specify_action_that_throws_exception);
 
-            specify(() => !result);
+            specify(() => result.IsFail);
         }
 
         void specify_action_that_throws_exception()

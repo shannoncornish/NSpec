@@ -45,7 +45,9 @@
     <Compile Include="PendingAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NSpec\NSpec.csproj">
       <Project>{475B40ED-7AA2-43C5-A58D-24D0BCD3DD53}</Project>
