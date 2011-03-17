@@ -1,0 +1,11 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" />
+  <Config name="Debug" binpathtype="Auto">
+    <assembly path="NSpec.NUnitAddin.Specs\bin\Debug\NSpec.NUnitAddin.Specs.dll" />
+    <assembly path="NSpec.Specs\bin\Debug\NSpec.Specs.dll" />
+  </Config>
+  <Config name="Release" binpathtype="Auto">
+    <assembly path="NSpec.NUnitAddin.Specs\bin\Release\NSpec.NUnitAddin.Specs.dll" />
+    <assembly path="NSpec.Specs\bin\Release\NSpec.Specs.dll" />
+  </Config>
+</NUnitProject>

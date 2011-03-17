@@ -1,9 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace NSpec.Core
 {
-    internal class Example
+    public class Example
     {
-        public bool IsFail { get; private set; }
-        public bool IsPass { get; private set; }
-        public bool IsPending { get; private set; }
+        readonly List<IExpectation> expectations = new List<IExpectation>();
+
+        public bool IsFail
+        {
+            get { return expectations.Any(e => e.IsFail); }
+        }
+
+        public bool IsPass
+        {
+            get { return expectations.All(e => e.IsPass); }
+        }
+
+        public void AddExpectation(IExpectation expectation)
+        {
+            expectations.Add(expectation);
+        }
+
+        public void Run()
+        {
+            expectations.ForEach(e => e.Run());
+        }
     }
 }

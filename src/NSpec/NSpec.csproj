@@ -35,7 +35,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\ActionExpectation.cs" />
     <Compile Include="Core\Example.cs" />
+    <Compile Include="Core\FuncExpectation.cs" />
+    <Compile Include="Core\IExpectation.cs" />
+    <Compile Include="Core\Runner.cs" />
+    <Compile Include="NSpecConfigurationException.cs" />
     <Compile Include="Spec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

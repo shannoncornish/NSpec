@@ -3,7 +3,6 @@ using NUnit.Framework;
 
 namespace NSpec.Specs.Acceptance
 {
-    [Pending]
     public class SpecifyingFuncs : Spec
     {
         [Test]

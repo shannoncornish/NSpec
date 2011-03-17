@@ -1,22 +1,31 @@
 ﻿using System;
 using System.Linq.Expressions;
+using NSpec.Core;
 
 namespace NSpec
 {
     public abstract class Spec
     {
-        protected void specify(Expression<Action> expression)
+        internal Example Example { get; set; }
+
+        protected void specify(Expression<Action> expectation)
         {
-            var action = expression.Compile();
-            action();
+            EnsureNSpecConfiguration();
+
+            Example.AddExpectation(new ActionExpectation(expectation));
         }
 
-        protected void specify(Expression<Func<bool>> expression)
+        protected void specify(Expression<Func<bool>> expectation)
         {
-            var func = expression.Compile();
-            var result = func();
-            if (!result) 
-                throw new Exception();
-       }
+            EnsureNSpecConfiguration();
+
+            Example.AddExpectation(new FuncExpectation(expectation));
+        }
+
+        void EnsureNSpecConfiguration()
+        {
+            if (Example == null)
+                throw new NSpecConfigurationException();
+        }
     }
 }

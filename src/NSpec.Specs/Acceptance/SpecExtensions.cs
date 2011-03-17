@@ -5,11 +5,10 @@ namespace NSpec.Specs.Acceptance
 {
     public static class SpecExtensions
     {
-        internal static Example Execute(this Spec spec, Action example)
+        internal static Example Execute(this Spec spec, Action specifyExpectations)
         {
-            example();
-            
-            return new Example();
+            using (var runner = new Runner(spec))
+                return runner.Run(specifyExpectations);
         }
     }
 }
