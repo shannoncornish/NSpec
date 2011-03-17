@@ -10,6 +10,7 @@ namespace NSpec.Specs.Core
         Example example;
         IExpectation failingExpectation;
         IExpectation passingExpectation;
+        IExpectation pendingExpectation;
 
         [SetUp]
         public void setup()
@@ -18,6 +19,7 @@ namespace NSpec.Specs.Core
 
             failingExpectation = CreateSubstituteExpectation(e => e.IsFail.Returns(true));
             passingExpectation = CreateSubstituteExpectation(e => e.IsPass.Returns(true));
+            pendingExpectation = CreateSubstituteExpectation(e => e.IsPending.Returns(true));
         }
 
         [Test]
@@ -32,9 +34,19 @@ namespace NSpec.Specs.Core
         public void should_fail_when_any_expectations_fail()
         {
             example.AddExpectation(passingExpectation);
+            example.AddExpectation(pendingExpectation);
             example.AddExpectation(failingExpectation);
 
             specify(() => example.IsFail);
+        }
+
+        [Test]
+        public void should_be_pending_when_any_expectations_are_pending_and_no_failing_expectations()
+        {
+            example.AddExpectation(passingExpectation);
+            example.AddExpectation(pendingExpectation);
+
+            specify(() => example.IsPending);
         }
 
         [Test]

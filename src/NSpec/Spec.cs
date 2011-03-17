@@ -22,6 +22,13 @@ namespace NSpec
             Example.AddExpectation(new FuncExpectation(expectation));
         }
 
+        protected void specify(string message)
+        {
+            EnsureNSpecConfiguration();
+
+            Example.AddExpectation(new PendingExpectation());
+        }
+
         void EnsureNSpecConfiguration()
         {
             if (Example == null)

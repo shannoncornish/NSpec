@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +15,11 @@ namespace NSpec.Core
         public bool IsPass
         {
             get { return expectations.All(e => e.IsPass); }
+        }
+
+        public bool IsPending
+        {
+            get { return !IsFail && expectations.Any(e => e.IsPending); }
         }
 
         public void AddExpectation(IExpectation expectation)

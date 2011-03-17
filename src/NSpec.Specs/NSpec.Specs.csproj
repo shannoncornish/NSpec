@@ -46,9 +46,11 @@
     <Compile Include="Acceptance\SpecExtensions.cs" />
     <Compile Include="Acceptance\SpecifyingActions.cs" />
     <Compile Include="Acceptance\SpecifyingFuncs.cs" />
+    <Compile Include="Acceptance\SpecifyingMessages.cs" />
     <Compile Include="Core\ActionExpectationSpec.cs" />
     <Compile Include="Core\ExampleSpec.cs" />
     <Compile Include="Core\FuncExpectationSpec.cs" />
+    <Compile Include="Core\PendingExpectationSpec.cs" />
     <Compile Include="NSubstituteExtensions.cs" />
     <Compile Include="PendingAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

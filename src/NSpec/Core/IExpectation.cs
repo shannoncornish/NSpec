@@ -4,6 +4,7 @@ namespace NSpec.Core
     {
         bool IsFail { get; }
         bool IsPass { get; }
+        bool IsPending { get; }
 
         void Run();
     }

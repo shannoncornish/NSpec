@@ -22,7 +22,9 @@ namespace NSpec.NUnitAddin
                 var example = runner.Run(() => RunBaseTestMethod(testResult));
 
                 if (example.IsFail)
-                    testResult.Failure(null, null);
+                    testResult.Failure("", "");
+                else if (example.IsPending)
+                    testResult.Ignore("");
             }
         }
 
