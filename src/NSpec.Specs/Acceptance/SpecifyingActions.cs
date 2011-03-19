@@ -18,6 +18,19 @@ namespace NSpec.Specs.Acceptance
             specify(() => action_that_completes_successfully());
         }
 
+        [Test]
+        public void should_pass_when_specifying_message_and_action_that_complets_successfully()
+        {
+            var result = this.Execute(specify_message_and_action_that_completes_sucessfully);
+
+            specify(() => result.IsPass);
+        }
+
+        void specify_message_and_action_that_completes_sucessfully()
+        {
+            specify("message", () => action_that_completes_successfully());
+        }
+
         void action_that_completes_successfully() {}
 
         [Test]

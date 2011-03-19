@@ -10,6 +10,11 @@ namespace NSpec
 
         protected void specify(Expression<Action> expectation)
         {
+            specify(null, expectation);
+        }
+
+        protected void specify(string message, Expression<Action> expectation)
+        {
             EnsureNSpecConfiguration();
 
             Example.AddExpectation(new ActionExpectation(expectation));
@@ -17,8 +22,13 @@ namespace NSpec
 
         protected void specify(Expression<Func<bool>> expectation)
         {
-            EnsureNSpecConfiguration();
+            specify(null, expectation);
+        }
 
+        protected void specify(string message, Expression<Func<bool>> expectation)
+        {
+            EnsureNSpecConfiguration();
+            
             Example.AddExpectation(new FuncExpectation(expectation));
         }
 

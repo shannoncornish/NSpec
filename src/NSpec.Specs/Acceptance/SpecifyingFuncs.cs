@@ -19,6 +19,19 @@ namespace NSpec.Specs.Acceptance
         }
 
         [Test]
+        public void should_pass_when_specifying_message_and_func_that_returns_true()
+        {
+            var result = this.Execute(specify_message_and_func_that_returns_true);
+
+            specify(() => result.IsPass);
+        }
+
+        void specify_message_and_func_that_returns_true()
+        {
+            specify("message", () => true);
+        }
+
+        [Test]
         public void should_fail_when_specifying_func_that_returns_false()
         {
             var result = this.Execute(specify_func_that_returns_false);
