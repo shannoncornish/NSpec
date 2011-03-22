@@ -27,9 +27,15 @@ namespace NSpec.Core
             expectations.Add(expectation);
         }
 
-        public void Run()
+        public void Run(IExampleReporter reporter)
         {
-            expectations.ForEach(e => e.Run());
+            expectations.ForEach(e => Run(e, reporter));
+        }
+
+        void Run(IExpectation expectation, IExampleReporter reporter)
+        {
+            expectation.Run();
+            reporter.ReportExpectation(expectation);
         }
     }
 }

@@ -1,11 +1,13 @@
 using System;
 using System.Linq.Expressions;
+using System.Text;
 
 namespace NSpec.Core
 {
     public class ActionExpectation : IExpectation
     {
         readonly Expression<Action> expression;
+        Exception exception;
 
         public ActionExpectation(Expression<Action> expression)
         {
@@ -14,7 +16,9 @@ namespace NSpec.Core
 
         public bool IsFail { get; private set; }
         public bool IsPass { get; private set; }
-        public bool IsPending { get; private set; }
+        public bool IsPending { get { return false; } }
+
+        public string Message { get; set; }
 
         public void Run()
         {
@@ -25,10 +29,25 @@ namespace NSpec.Core
 
                 IsPass = true;
             }
-            catch
+            catch (Exception e)
             {
+                exception = e;
                 IsFail = true;
             }
+        }
+
+        public override string ToString()
+        {
+            var stringBuilder = new StringBuilder();
+            if (Message != null)
+                stringBuilder.AppendLine(string.Format("Message: {0}", Message));
+
+            stringBuilder.AppendLine(string.Format("Expression: {0}", expression));
+
+            if (exception != null)
+                stringBuilder.AppendLine(string.Format("Exception: {0}", exception));
+
+            return stringBuilder.ToString();
         }
     }
 }

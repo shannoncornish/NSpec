@@ -38,6 +38,7 @@
     <Compile Include="Core\ActionExpectation.cs" />
     <Compile Include="Core\Example.cs" />
     <Compile Include="Core\FuncExpectation.cs" />
+    <Compile Include="Core\IExampleReporter.cs" />
     <Compile Include="Core\IExpectation.cs" />
     <Compile Include="Core\PendingExpectation.cs" />
     <Compile Include="Core\Runner.cs" />

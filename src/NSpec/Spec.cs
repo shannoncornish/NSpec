@@ -17,7 +17,7 @@ namespace NSpec
         {
             EnsureNSpecConfiguration();
 
-            Example.AddExpectation(new ActionExpectation(expectation));
+            Example.AddExpectation(new ActionExpectation(expectation) { Message = message });
         }
 
         protected void specify(Expression<Func<bool>> expectation)
@@ -29,14 +29,14 @@ namespace NSpec
         {
             EnsureNSpecConfiguration();
             
-            Example.AddExpectation(new FuncExpectation(expectation));
+            Example.AddExpectation(new FuncExpectation(expectation) { Message = message });
         }
 
         protected void specify(string message)
         {
             EnsureNSpecConfiguration();
 
-            Example.AddExpectation(new PendingExpectation());
+            Example.AddExpectation(new PendingExpectation { Message = message });
         }
 
         void EnsureNSpecConfiguration()

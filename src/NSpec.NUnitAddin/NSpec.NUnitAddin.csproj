@@ -47,6 +47,7 @@
     <Compile Include="NSpecTestMethod.cs" />
     <Compile Include="NSpecTestMethodBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestResultExampleReporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NSpec\NSpec.csproj">

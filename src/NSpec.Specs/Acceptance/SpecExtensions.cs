@@ -1,5 +1,6 @@
 using System;
 using NSpec.Core;
+using NSubstitute;
 
 namespace NSpec.Specs.Acceptance
 {
@@ -8,7 +9,7 @@ namespace NSpec.Specs.Acceptance
         internal static Example Execute(this Spec spec, Action specifyExpectations)
         {
             using (var runner = new Runner(spec))
-                return runner.Run(specifyExpectations);
+                return runner.Run(specifyExpectations, Substitute.For<IExampleReporter>());
         }
     }
 }

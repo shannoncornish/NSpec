@@ -11,6 +11,7 @@ namespace NSpec.Specs.Core
         IExpectation failingExpectation;
         IExpectation passingExpectation;
         IExpectation pendingExpectation;
+        IExampleReporter exampleReporter;
 
         [SetUp]
         public void setup()
@@ -20,6 +21,8 @@ namespace NSpec.Specs.Core
             failingExpectation = CreateSubstituteExpectation(e => e.IsFail.Returns(true));
             passingExpectation = CreateSubstituteExpectation(e => e.IsPass.Returns(true));
             pendingExpectation = CreateSubstituteExpectation(e => e.IsPending.Returns(true));
+
+            exampleReporter = Substitute.For<IExampleReporter>();
         }
 
         [Test]
@@ -55,10 +58,22 @@ namespace NSpec.Specs.Core
             example.AddExpectation(passingExpectation);
             example.AddExpectation(failingExpectation);
 
-            example.Run();
+            example.Run(exampleReporter);
 
             specify(() => passingExpectation.Received().Run());
             specify(() => failingExpectation.Received().Run());
+        }
+
+        [Test]
+        public void should_report_all_expectations_when_running_example()
+        {
+            example.AddExpectation(passingExpectation);
+            example.AddExpectation(pendingExpectation);
+
+            example.Run(exampleReporter);
+
+            specify(() => exampleReporter.Received().ReportExpectation(passingExpectation));
+            specify(() => exampleReporter.Received().ReportExpectation(pendingExpectation));
         }
 
         IExpectation CreateSubstituteExpectation(Action<IExpectation> initialize)

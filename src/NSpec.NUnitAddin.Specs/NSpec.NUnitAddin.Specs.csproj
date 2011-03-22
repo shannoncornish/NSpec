@@ -53,6 +53,7 @@
     <Compile Include="NSpecTestMethodBuilderSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NUnitSubstitute.cs" />
+    <Compile Include="TestResultExampleReporterSpec.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NSpec.NUnitAddin\NSpec.NUnitAddin.csproj">

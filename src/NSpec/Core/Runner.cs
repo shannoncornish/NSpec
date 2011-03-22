@@ -13,13 +13,13 @@ namespace NSpec.Core
             preExistingExample = spec.Example;
         }
 
-        public Example Run(Action specifyExpectations)
+        public Example Run(Action specifyExpectations, IExampleReporter exampleReporter)
         {
             var example = new Example();
             spec.Example = example;
 
             specifyExpectations();
-            example.Run();
+            example.Run(exampleReporter);
 
             return example;
         }
