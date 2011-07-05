@@ -9,7 +9,11 @@ namespace NSpec.Specs.Acceptance
         internal static Example Execute(this Spec spec, Action specifyExpectations)
         {
             using (var runner = new Runner(spec))
-                return runner.Run(specifyExpectations, Substitute.For<IExampleReporter>());
+                return runner.Run(() => {
+                    spec.SetUp();
+                    specifyExpectations();
+                    spec.TearDown();
+                }, Substitute.For<IExampleReporter>());
         }
     }
 }

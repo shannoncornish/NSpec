@@ -8,6 +8,16 @@ namespace NSpec.NUnitAddin
 {
     public class NSpecTestMethod : TestMethod
     {
+        static readonly MethodInfo setUpMethod;
+        static readonly MethodInfo tearDownMethod;
+
+        static NSpecTestMethod()
+        {
+            var specType = typeof(Spec);
+            setUpMethod = specType.GetMethod("SetUp", BindingFlags.Instance | BindingFlags.NonPublic);
+            tearDownMethod = specType.GetMethod("TearDown", BindingFlags.Instance | BindingFlags.NonPublic);
+        }
+
         public NSpecTestMethod(MethodInfo methodInfo) : base(methodInfo)
         {
         }
@@ -17,26 +27,34 @@ namespace NSpec.NUnitAddin
             get { return (Spec) Fixture; }
         }
 
-        public override void RunTestMethod(TestResult testResult)
+        public override TestResult RunTest()
         {
+            ArrayUtil.Add(ref setUpMethods, setUpMethod);
+            ArrayUtil.Add(ref tearDownMethods, tearDownMethod); // TearDown methods are run in reverse order
+
             using (var runner = new Runner(Spec))
             {
-                var example = runner.Run(() => RunBaseTestMethod(testResult), new TestResultExampleReporter(testResult));
+                var exampleResult = new TestResult(this);
+                var exampleReporter = new TestResultExampleReporter(exampleResult);
 
+                TestResult testResult = null;
+                var example = runner.Run(() => testResult = RunBaseTest(), exampleReporter);
                 if (example.IsFail)
-                    testResult.Failure(GetTestResultMessageForResultState(testResult, ResultState.Failure, "Failing"), "");
+                    testResult.Failure(GetTestResultMessageForResultState(exampleResult, ResultState.Failure, "Failing"), "");
 
                 if (example.IsPass)
                     testResult.Success();
 
                 if (example.IsPending)
-                    testResult.Ignore(GetTestResultMessageForResultState(testResult, ResultState.Ignored, "Pending"));
+                    testResult.Ignore(GetTestResultMessageForResultState(exampleResult, ResultState.Ignored, "Pending"));
+
+                return testResult;
             }
         }
 
-        void RunBaseTestMethod(TestResult testResult)
+        TestResult RunBaseTest()
         {
-            base.RunTestMethod(testResult);
+            return base.RunTest();
         }
 
         string GetTestResultMessageForResultState(TestResult testResult, ResultState state, string heading)

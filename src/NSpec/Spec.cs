@@ -7,6 +7,8 @@ namespace NSpec
     public abstract class Spec
     {
         internal Example Example { get; set; }
+        internal Action SetUpAction { get; set; }
+        internal Action TearDownAction { get; set; }
 
         protected void specify(Expression<Action> expectation)
         {
@@ -37,6 +39,18 @@ namespace NSpec
             EnsureNSpecConfiguration();
 
             Example.AddExpectation(new PendingExpectation { Message = message });
+        }
+
+        internal void SetUp()
+        {
+            if (SetUpAction != null)
+                SetUpAction();
+        }
+
+        internal void TearDown()
+        {
+            if (TearDownAction != null)
+                TearDownAction();
         }
 
         void EnsureNSpecConfiguration()

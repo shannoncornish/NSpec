@@ -47,6 +47,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayUtilSpec.cs" />
     <Compile Include="DecorateTestSpecificationSpec.cs" />
     <Compile Include="NSpecNUnitAddinSpec.cs" />
     <Compile Include="NSpecTestDecoratorSpec.cs" />
