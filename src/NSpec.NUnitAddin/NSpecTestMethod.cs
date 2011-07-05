@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using System.Text;
 using NSpec.Core;
@@ -39,15 +38,15 @@ namespace NSpec.NUnitAddin
 
                 TestResult testResult = null;
                 var example = runner.Run(() => testResult = RunBaseTest(), exampleReporter);
-                if (example.IsFail)
-                    testResult.Failure(GetTestResultMessageForResultState(exampleResult, ResultState.Failure, "Failing"), "");
+                if (testResult.IsSuccess)
+                {
+                    if (example.IsFail)
+                        testResult.Failure(GetTestResultMessageForResultState(exampleResult, ResultState.Failure, "Failing"), "");
 
-                if (example.IsPass)
-                    testResult.Success();
+                    if (example.IsPending)
+                        testResult.Ignore(GetTestResultMessageForResultState(exampleResult, ResultState.Ignored, "Pending"));
 
-                if (example.IsPending)
-                    testResult.Ignore(GetTestResultMessageForResultState(exampleResult, ResultState.Ignored, "Pending"));
-
+                }
                 return testResult;
             }
         }
