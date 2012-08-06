@@ -15,16 +15,5 @@ namespace NSpec.NUnitAddin.Specs
             specify(() => array[3] == 4);
             specify(() => array.Length == 4);
         }
-
-        [Test]
-        public void add_should_create_array_with_item_when_given_null_array()
-        {
-            int[] array = null;
-
-            ArrayUtil.Add(ref array, 1);
-
-            specify(() => array[0] == 1);
-            specify(() => array.Length == 1);
-        }
     }
 }
