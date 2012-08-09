@@ -41,7 +41,6 @@
     <Compile Include="Core\IExampleReporter.cs" />
     <Compile Include="Core\IExpectation.cs" />
     <Compile Include="Core\PendingExpectation.cs" />
-    <Compile Include="Core\Runner.cs" />
     <Compile Include="NSpecConfigurationException.cs" />
     <Compile Include="Spec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

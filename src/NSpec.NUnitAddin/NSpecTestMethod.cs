@@ -21,39 +21,28 @@ namespace NSpec.NUnitAddin
         {
         }
 
-        Spec Spec
-        {
-            get { return (Spec) Fixture; }
-        }
-
         public override TestResult RunTest()
         {
             ArrayUtil.Add(ref setUpMethods, setUpMethod);
             ArrayUtil.Add(ref tearDownMethods, tearDownMethod); // TearDown methods are run in reverse order
 
-            using (var runner = new Runner(Spec))
+            var testResult = base.RunTest();
+            if (testResult.IsSuccess)
             {
                 var exampleResult = new TestResult(this);
                 var exampleReporter = new TestResultExampleReporter(exampleResult);
 
-                TestResult testResult = null;
-                var example = runner.Run(() => testResult = RunBaseTest(), exampleReporter);
-                if (testResult.IsSuccess)
-                {
-                    if (example.IsFail)
-                        testResult.Failure(GetTestResultMessageForResultState(exampleResult, ResultState.Failure, "Failing"), "");
+                var example = ((Spec) Fixture).PreviousExample;
+                example.Run(exampleReporter);
 
-                    if (example.IsPending)
-                        testResult.Ignore(GetTestResultMessageForResultState(exampleResult, ResultState.Ignored, "Pending"));
+                if (example.IsFail)
+                    testResult.Failure(GetTestResultMessageForResultState(exampleResult, ResultState.Failure, "Failing"), "");
 
-                }
-                return testResult;
+                if (example.IsPending)
+                    testResult.Ignore(GetTestResultMessageForResultState(exampleResult, ResultState.Ignored, "Pending"));
             }
-        }
 
-        TestResult RunBaseTest()
-        {
-            return base.RunTest();
+            return testResult;
         }
 
         string GetTestResultMessageForResultState(TestResult testResult, ResultState state, string heading)

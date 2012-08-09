@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using NSpec.Core;
 
@@ -6,9 +7,9 @@ namespace NSpec
 {
     public abstract class Spec
     {
-        internal Example Example { get; set; }
-        internal Action SetUpAction { get; set; }
-        internal Action TearDownAction { get; set; }
+        readonly Stack<Example> examples = new Stack<Example>();
+
+        internal Example PreviousExample { get; private set; }
 
         protected void specify(Expression<Action> expectation)
         {
@@ -17,9 +18,7 @@ namespace NSpec
 
         protected void specify(string message, Expression<Action> expectation)
         {
-            EnsureNSpecConfiguration();
-
-            Example.AddExpectation(new ActionExpectation(expectation) { Message = message });
+            AddExpectation(new ActionExpectation(expectation) { Message = message });
         }
 
         protected void specify(Expression<Func<bool>> expectation)
@@ -29,34 +28,31 @@ namespace NSpec
 
         protected void specify(string message, Expression<Func<bool>> expectation)
         {
-            EnsureNSpecConfiguration();
-            
-            Example.AddExpectation(new FuncExpectation(expectation) { Message = message });
+            AddExpectation(new FuncExpectation(expectation) { Message = message });
         }
 
         protected void specify(string message)
         {
-            EnsureNSpecConfiguration();
-
-            Example.AddExpectation(new PendingExpectation { Message = message });
+            AddExpectation(new PendingExpectation { Message = message });
         }
 
         internal void SetUp()
         {
-            if (SetUpAction != null)
-                SetUpAction();
+            examples.Push(new Example());
         }
 
         internal void TearDown()
         {
-            if (TearDownAction != null)
-                TearDownAction();
+            PreviousExample = examples.Pop();
         }
 
-        void EnsureNSpecConfiguration()
+        void AddExpectation(IExpectation expectation)
         {
-            if (Example == null)
+            if (examples.Count == 0)
                 throw new NSpecConfigurationException();
+
+            var currentExample = examples.Peek();
+            currentExample.AddExpectation(expectation);
         }
     }
 }

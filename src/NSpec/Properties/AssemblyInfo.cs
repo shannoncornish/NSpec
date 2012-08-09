@@ -36,3 +36,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("0.1.2.0")]
 
 [assembly: InternalsVisibleTo("NSpec.Specs")]
+[assembly: InternalsVisibleTo("NSpec.NUnitAddin")]
